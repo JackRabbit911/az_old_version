@@ -1,0 +1,46 @@
+<?php
+
+return [
+    'required'      => 'This field is required',
+    'email'         => 'The entered data does not match the email format',
+    'username'      => 'This field only accepts letters, numbers, spaces, @ and !',           
+    'integer'       => 'This field only accepts whole numbers',
+    'alpha'         => 'This field only accepts latin letters',
+    'alpha_num'     => 'This field only accepts integers and Latin letters',
+    'alpha_space'   => 'This field only accepts latin letters and spaces',
+    'alpha_utf8'    => 'This field only accepts letters',
+    'alpha_num_utf8' => 'This field only accepts integers and letters',
+    'alpha_space_utf8'=>'This field only accepts letters and spaces',
+    'text_utf8'     => 'The entered data contains invalid characters',
+    'phone'         => 'The entered data does not match the phone number format',
+    'phone_strict'  => 'The entered data does not match the phone number format',
+    'valid_date'    => 'The entered data does not match the date format',
+    'min_length'    => 'The string must be at least :min characters long',
+    'max_length'    => 'The string must be no more than :max characters long',
+    'length'        => 'The string length must be between :min and :max characters',
+    'confirm'       => 'The entered data does not match the field "Password"',
+    'regexp'        => 'The entered data contains invalid characters',
+    'boolean'       => 'Cannot cast to boolean type',
+    'maxValue'      => 'Value cannot exceed :max',
+    'minValue'      => 'Value cannot be less than :min',
+    'yes'           => 'Need an affirmative answer',
+
+    'required_one_of'=> 'One of the fields: (:fields) must be filled',
+    'email_or_phone' => 'The entered data does not match the email or phone number format',
+    
+    'default'       => 'data entered incorrectly',
+
+    'success' => '',
+
+    'notEmpty' => 'You need select a file',
+    'size'  => 'File upload size exceeds :size',
+    'mime'  => 'File upload mime-type not allowed',
+    'ext'   => 'File upload mime-type not allowed',
+    'type'  => 'File upload mime-type not allowed',
+    'checkClientFilename' => 'Invalid file name',
+    'uploaded' => 'Uploaded :uploaded files, failed :failed',
+    'uploadSuccess' => 'File was upload successfuly',
+    'UPLOAD_ERR_INI_SIZE' => 'The uploaded file exceeds the :size',
+    'UPLOAD_ERR_FORM_SIZE' => 'The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form',
+    'UPLOAD_ERR_PARTIAL' => 'The uploaded file was only partially uploaded',
+];
