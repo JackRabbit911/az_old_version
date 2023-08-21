@@ -1,0 +1,43 @@
+#!/usr/bin/php
+<?php
+
+use League\CLImate\CLImate;
+use Sys\Console\CommandInvoker;
+
+define('DOCROOT', __DIR__ . '/');
+define('CONFIGPATH', 'app/config/');
+
+require_once DOCROOT . 'sys/src/autoload.php';
+require_once DOCROOT . 'vendor/autoload.php';
+
+$container = (new Sys\ContainerFactory('cli'))->create(new DI\ContainerBuilder());
+$climate = $container->get(CLImate::class);
+ru($climate);
+
+array_shift($argv);
+$command = array_shift($argv);
+$method = array_shift($argv);
+$handler = $container->call(CommandInvoker::class, [$command, $method]);
+$container->call($handler, $argv);
+$climate->br();
+
+function ru($climate)
+{
+    $climate->inline('True hashtag: ');
+    $climate->backgroundWhite()->black()->inline('#Stan');
+    $climate->backgroundBlue()->inline('dWith');
+    $climate->backgroundRed()->out('Russia');
+    $climate->br();
+}
+
+function dd(...$values)
+{
+    ob_start();
+        $trace = debug_backtrace(DEBUG_BACKTRACE_PROVIDE_OBJECT, 1);
+        echo 'file: ', $trace[0]['file'], ' line: ', $trace[0]['line'], '<br>';
+        var_dump(...$values);
+    $output = ob_get_clean();
+
+    echo str_replace('<br>', PHP_EOL, strip_tags($output, ['<br>']));
+    exit;
+}

@@ -1,0 +1,29 @@
+{
+    "require": {
+        "php-di/php-di": "^7.0",
+        "monolog/monolog": "^3.3",
+        "httpsoft/http-message": "^1.0",
+        "httpsoft/http-server-request": "^1.0",
+        "httpsoft/http-runner": "^1.0",
+        "httpsoft/http-response": "^1.0",
+        "pecee/pixie": "^4.15",
+        "behat/transliterator": "^1.5",
+        "twig/twig": "^3.5",
+        "filp/whoops": "^2.15",
+        "league/climate": "^3.8",
+        "symfony/yaml": "^6.2",
+        "vlucas/phpdotenv": "^5.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Az\\Route\\": "vendor/az/route/src/",
+            "Az\\Session\\": "vendor/az/session/src/",
+            "Az\\Validation\\": "vendor/az/validation/src/",
+            "Sys\\": "vendor/az/sys/src/"
+        }
+    },
+    "require-dev": {
+        "fakerphp/faker": "^1.22",
+        "ottaviano/faker-gravatar": "^0.2.0"
+    }
+}

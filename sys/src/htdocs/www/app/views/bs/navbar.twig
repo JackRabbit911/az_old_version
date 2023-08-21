@@ -1,0 +1,67 @@
+{% macro menuitem(title, href) %}
+    {# {% if route is null %}
+        {% set href = '/#' %}
+    {% else %}    
+        {% set href = path(route, params|default([])) %}
+    {% endif %} #}
+    {% if href == uri %}
+        {% set active = ' active' %}
+    {% else %}
+        {% set active = '' %}
+    {% endif %}
+    <li class="nav-item">
+        <a class="nav-link{{ active }}" href="{{ href }}">{{ __(title) }}</a>
+    </li>
+{% endmacro %}
+
+{{ uri }}
+
+<nav class="navbar navbar-expand-lg border-bottom border-secondary sticky-top bg-body">
+    <div class="container-fluid">
+        {# <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="sidebar">
+            <span class="navbar-toggler-icon"></span>
+        </button> #}
+        <a class="navbar-brand" href="{{ path('home') }}" title="{{ __('Homepage') }}">{{ __('Burime') }}</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                {{ _self.menuitem('Rules', path('home', {'action': 'rules'})) }}
+                {{ _self.menuitem('Search') }}
+                {{ _self.menuitem('Authors') }}
+                {{ _self.menuitem('F.A.Q.') }}
+            </ul>
+            <ul class="navbar-nav ms-auto">
+                {% if user is null %}
+                <li class="nav-item">
+                    {# <a class="nav-link" href="{{ path('auth.form') }}">{{ __('Sign In') }}</a> #}
+                    {{ _self.menuitem('Sign In') }}
+                </li>
+                {% else %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">{{ user.name }}</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">{{ __('Private Data') }}</a></li>
+                        <li><a class="dropdown-item" href="#">{{ __('My Authors') }}</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Quit</a></li>
+                    </ul>
+                </li>
+                {# <li class="nav-item">
+                    <a class="nav-link" href="#">{{ __('Create new project') }}</a>
+                </li> #}
+                {% endif %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">{{ i18n.lang() }}</a>
+                    <ul class="dropdown-menu">
+                        {% for href,language in i18n.linksList %}
+                            <li><a class="dropdown-item" href="{{ href }}">{{ language }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+  </nav>

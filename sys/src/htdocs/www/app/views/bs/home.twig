@@ -1,0 +1,11 @@
+{% extends 'layout.twig' %}
+
+{% block content %}
+    <h1 class="display-6 me-3">{{ __('Literary game Burime') }}</h1>
+    {% for lang,language in i18n.linksList %}
+        {{ lang }} {{ language }} <br>
+    {% endfor %}
+
+    {{ path('home') }}
+    {# {{ user.name }} #}
+{% endblock %}
